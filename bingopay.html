@@ -1,0 +1,3192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BingoPay - Powering Every Payment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============ GLOBAL / BASE STYLES ============ */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      /* ============ CUSTOM SCROLLBAR (bank strip / faq) ============ */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* ============ CUSTOM BRAND COLOR UTILITIES ============ */
+      :root {
+        --bingo-blue: #0b57d0;
+        --bingo-navy: #071a3d;
+        --bingo-navy-2: #0b234e;
+      }
+
+      .bg-bingo-blue {
+        background-color: var(--bingo-blue);
+      }
+
+      .text-bingo-blue {
+        color: var(--bingo-blue);
+      }
+
+      .bg-bingo-navy {
+        background-color: var(--bingo-navy);
+      }
+
+      /* ============ FAQ ACCORDION ============ */
+      details > summary {
+        list-style: none;
+        cursor: pointer;
+      }
+
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      details[open] .faq-icon {
+        transform: rotate(180deg);
+      }
+
+      /* ============ trusted partner dear  ============ */
+      .partners-track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        animation: partners-scroll 40s linear infinite;
+        will-change: transform;
+      }
+
+      .partners-group {
+        display: flex;
+        align-items: center;
+        gap: 42px;
+        flex-shrink: 0;
+        padding-right: 42px;
+      }
+
+      .partner-logo {
+        width: 105px;
+        height: 34px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+      }
+
+      .partner-logo img {
+        display: block;
+
+        width: auto;
+        height: auto;
+
+        max-width: 100%;
+        max-height: 28px;
+
+        object-fit: contain;
+      }
+
+      @keyframes partners-scroll {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .partners-track:hover {
+        animation-play-state: paused;
+      }
+
+      @media (max-width: 768px) {
+        .partners-group {
+          gap: 28px;
+          padding-right: 28px;
+        }
+
+        .partner-logo {
+          width: 85px;
+          height: 30px;
+        }
+
+        .partner-logo img {
+          max-height: 24px;
+        }
+
+        .partners-track {
+          animation-duration: 32s;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-slate-800 antialiased">
+    <!-- =====================================================
+     TOP UTILITY BAR
+===================================================== -->
+    <div
+      class="hidden sm:flex h-[32px] bg-[#0046A3] text-white items-center justify-between px-4 md:px-10"
+    >
+      <span
+        class="text-[8px] md:text-[9px] leading-[16px] font-normal opacity-90"
+      >
+        India's Trusted Digital Payments Platform for Retailers &amp;
+        Distributors
+      </span>
+
+      <div
+        class="flex items-center h-full text-[8px] md:text-[9px] leading-[16px] opacity-90"
+      >
+        <a href="#" class="hover:underline"> Partner with Us </a>
+
+        <span class="mx-2 opacity-60">|</span>
+
+        <a href="#" class="hover:underline"> Help &amp; Support </a>
+
+        <span class="mx-2 opacity-60">|</span>
+
+        <span> 1800 123 4567 </span>
+      </div>
+    </div>
+
+    <!-- =====================================================
+     NAVBAR
+===================================================== -->
+    <header
+      class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100"
+    >
+      <nav
+        class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-10 py-3"
+      >
+        <a
+          href="#"
+          class="flex items-center gap-2 font-extrabold text-lg text-bingo-navy"
+        >
+          <span
+            class="w-8 h-8 rounded-lg bg-bingo-blue text-white flex items-center justify-center text-sm"
+            >B</span
+          >
+          BingoPay
+        </a>
+        <ul
+          class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600"
+        >
+          <li>
+            <a
+              href="#"
+              class="text-bingo-blue border-b-2 border-bingo-blue pb-1"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="#services" class="hover:text-bingo-blue">Services</a>
+          </li>
+          <li>
+            <a href="#retailers" class="hover:text-bingo-blue">For Retailers</a>
+          </li>
+          <li>
+            <a href="#distributors" class="hover:text-bingo-blue"
+              >For Distributors</a
+            >
+          </li>
+          <li><a href="#why" class="hover:text-bingo-blue">Why Us</a></li>
+        </ul>
+        <div class="flex items-center gap-3">
+          <button
+            class="hidden md:inline-block bg-bingo-blue text-white text-sm font-semibold px-5 py-2 rounded-lg hover:bg-blue-700 transition"
+          >
+            Get Started
+          </button>
+          <button class="lg:hidden text-slate-700" aria-label="menu">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- =========================
+     BINGOPAY HERO
+========================= -->
+    <section class="relative w-full overflow-hidden bg-[#f4f9ff]">
+      <!-- Background Image -->
+      <div
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style="background-image: url(&quot;./hero_sec_banner.png&quot;)"
+      ></div>
+
+      <!-- Content -->
+      <div
+        class="relative z-10 mx-auto flex min-h-[480px] w-full max-w-[1440px] items-center px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16"
+      >
+        <!-- LEFT CONTENT -->
+        <div
+          class="w-full max-w-[590px] pb-4 pt-4 sm:max-w-[610px] md:max-w-[620px]"
+        >
+          <!-- Heading -->
+          <h1
+            class="max-w-[600px] text-[30px] font-extrabold leading-[1.08] tracking-[-1.2px] text-[#102b68] sm:text-[34px] md:text-[38px] lg:text-[40px]"
+          >
+            Powering Every Payment.
+            <span class="block text-[#0869df]">
+              Empowering Every Business.
+            </span>
+          </h1>
+
+          <!-- Description -->
+          <p
+            class="mt-3 max-w-[500px] text-[11px] leading-[1.45] text-[#63738c] sm:text-[12px] md:text-[13px]"
+          >
+            All your business payments, collections and banking services in one
+            secure platform. Simple. Safe. Smarter.
+          </p>
+
+          <!-- Service Pills -->
+          <div class="mt-4 flex max-w-[520px] flex-wrap gap-1.5">
+            <span
+              class="rounded-[5px] border border-[#e0e9f5] bg-white/90 px-2.5 py-1 text-[8px] font-medium text-[#52637b] shadow-[0_1px_4px_rgba(30,80,140,0.05)]"
+            >
+              AEPS
+            </span>
+
+            <span
+              class="rounded-[5px] border border-[#e0e9f5] bg-white/90 px-2.5 py-1 text-[8px] font-medium text-[#52637b] shadow-[0_1px_4px_rgba(30,80,140,0.05)]"
+            >
+              Money Transfer
+            </span>
+
+            <span
+              class="rounded-[5px] border border-[#e0e9f5] bg-white/90 px-2.5 py-1 text-[8px] font-medium text-[#52637b] shadow-[0_1px_4px_rgba(30,80,140,0.05)]"
+            >
+              Bill Payments
+            </span>
+
+            <span
+              class="rounded-[5px] border border-[#e0e9f5] bg-white/90 px-2.5 py-1 text-[8px] font-medium text-[#52637b] shadow-[0_1px_4px_rgba(30,80,140,0.05)]"
+            >
+              Recharge
+            </span>
+
+            <span
+              class="rounded-[5px] border border-[#e0e9f5] bg-white/90 px-2.5 py-1 text-[8px] font-medium text-[#52637b] shadow-[0_1px_4px_rgba(30,80,140,0.05)]"
+            >
+              Insurance
+            </span>
+
+            <span
+              class="rounded-[5px] border border-[#e0e9f5] bg-white/90 px-2.5 py-1 text-[8px] font-medium text-[#52637b] shadow-[0_1px_4px_rgba(30,80,140,0.05)]"
+            >
+              Travel &amp; More
+            </span>
+          </div>
+
+          <!-- Buttons -->
+          <div class="mt-4 flex items-center gap-3">
+            <!-- Get Started -->
+            <button
+              type="button"
+              class="flex h-[40px] min-w-[142px] items-center justify-center gap-3 rounded-[8px] bg-[#0869df] px-5 text-[10px] font-semibold text-white shadow-[0_5px_15px_rgba(8,105,223,0.18)] transition duration-300 hover:bg-[#005bc9]"
+            >
+              <span>Get Started</span>
+
+              <span class="text-[15px] leading-none"> → </span>
+            </button>
+
+            <!-- Explore Services -->
+            <button
+              type="button"
+              class="flex h-[40px] min-w-[142px] items-center justify-center gap-3 rounded-[8px] border border-[#9ec4f4] bg-white/90 px-5 text-[10px] font-semibold text-[#365474] transition duration-300 hover:border-[#0869df] hover:text-[#0869df]"
+            >
+              <span>Explore Services</span>
+
+              <span class="text-[15px] leading-none"> → </span>
+            </button>
+          </div>
+
+          <!-- Trust Features -->
+          <div
+            class="mt-5 flex items-center gap-5 text-[8px] font-medium text-[#61728b]"
+          >
+            <!-- Fast -->
+            <div class="flex items-center gap-1.5">
+              <span
+                class="flex h-[18px] w-[18px] items-center justify-center rounded-full border border-[#88a7d1] text-[9px] text-[#426c9f]"
+              >
+                ✓
+              </span>
+
+              <span> Fast &amp; Secure </span>
+            </div>
+
+            <!-- RBI -->
+            <div class="flex items-center gap-1.5">
+              <span
+                class="flex h-[18px] w-[18px] items-center justify-center rounded-full border border-[#88a7d1] text-[9px] text-[#426c9f]"
+              >
+                ✓
+              </span>
+
+              <span> RBI Compliant </span>
+            </div>
+
+            <!-- Trusted -->
+            <div class="flex items-center gap-1.5">
+              <span
+                class="flex h-[18px] w-[18px] items-center justify-center rounded-full border border-[#88a7d1] text-[9px] text-[#426c9f]"
+              >
+                ✓
+              </span>
+
+              <span> Trusted by 1M+ Businesses </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     TRUSTED PARTNER LOGOS STRIP
+===================================================== -->
+    <!-- Trusted Banks & Partners -->
+    <section class="border-y border-slate-100 bg-white overflow-hidden">
+      <div class="mx-auto max-w-7xl px-4 md:px-10 py-5">
+        <!-- Heading -->
+        <div class="mb-3 flex items-center justify-between">
+          <p class="text-[10px] font-medium text-[#8a98ad]">
+            Trusted by Leading Banks &amp; Partners
+          </p>
+
+          <p class="hidden text-[8px] font-medium text-[#a0adbf] sm:block">
+            Backed by Secure Technology Partners
+          </p>
+        </div>
+
+        <!-- Logo Slider -->
+        <div class="relative w-full overflow-hidden">
+          <div class="partners-track">
+            <!-- LOGO SET 1 -->
+            <div class="partners-group">
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/State_Bank_of_India.svg"
+                  alt="SBI"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/HDFC_Bank_Logo.svg"
+                  alt="HDFC Bank"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/ICICI_Bank_Logo.svg"
+                  alt="ICICI Bank"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/AXISBank_Logo.svg"
+                  alt="Axis Bank"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Yes_Bank_SVG_Logo.svg"
+                  alt="YES Bank"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Paytm_Logo_(standalone).svg"
+                  alt="Paytm"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Airtel_logo.svg"
+                  alt="Airtel"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Reliance_Jio_Logo.svg"
+                  alt="Jio"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://www.presentations.gov.in/wp-content/uploads/2020/06/IRCTC-SVG.svg"
+                  alt="IRCTC"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NPCI_logo.svg"
+                  alt="NPCI"
+                />
+              </div>
+            </div>
+
+            <!-- LOGO SET 2 - DUPLICATE FOR INFINITE LOOP -->
+            <div class="partners-group">
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/State_Bank_of_India.svg"
+                  alt="SBI"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/HDFC_Bank_Logo.svg"
+                  alt="HDFC Bank"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/ICICI_Bank_Logo.svg"
+                  alt="ICICI Bank"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/AXISBank_Logo.svg"
+                  alt="Axis Bank"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Yes_Bank_SVG_Logo.svg"
+                  alt="YES Bank"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Paytm_Logo_(standalone).svg"
+                  alt="Paytm"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Airtel_logo.svg"
+                  alt="Airtel"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Reliance_Jio_Logo.svg"
+                  alt="Jio"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://www.presentations.gov.in/wp-content/uploads/2020/06/IRCTC-SVG.svg"
+                  alt="IRCTC"
+                />
+              </div>
+
+              <div class="partner-logo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NPCI_logo.svg"
+                  alt="NPCI"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     IMPACT STATS BANNER
+===================================================== -->
+    <!-- IMPACT ACROSS INDIA -->
+    <section class="bg-white py-2">
+      <div
+        class="mx-auto h-[112px] w-[872px] max-w-[calc(100vw-16px)] overflow-hidden rounded-[9px] border border-[#17477f] bg-[#062b68] px-[20px] py-[13px]"
+      >
+        <!-- TITLE -->
+        <div class="mb-[8px]">
+          <p class="text-[10px] font-semibold leading-none text-[#58b5ff]">
+            Our Impact Across India
+          </p>
+        </div>
+
+        <!-- MAIN ROW -->
+        <div class="flex h-[61px] items-center">
+          <!-- ================= LEFT STATS ================= -->
+          <div class="flex shrink-0 items-center gap-[7px]">
+            <!-- 1M+ -->
+            <div
+              class="flex h-[61px] w-[115px] items-center gap-[8px] rounded-[6px] border border-[#15518e] bg-[#0a3470] px-[9px]"
+            >
+              <div
+                class="flex h-[29px] w-[29px] shrink-0 items-center justify-center rounded-full border border-[#1595ed]"
+              >
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#50baff"
+                  stroke-width="1.6"
+                >
+                  <circle cx="12" cy="8" r="3.4" />
+                  <path d="M5 20c.7-3.5 3-5.4 7-5.4s6.3 1.9 7 5.4" />
+                </svg>
+              </div>
+
+              <div class="min-w-0">
+                <div
+                  class="text-[13px] font-bold leading-none tracking-[-0.2px] text-white"
+                >
+                  1M+
+                </div>
+
+                <div
+                  class="mt-[5px] whitespace-nowrap text-[6px] leading-none text-[#b1c9e6]"
+                >
+                  Happy Retailers
+                </div>
+              </div>
+            </div>
+
+            <!-- ₹5000Cr+ -->
+            <div
+              class="flex h-[61px] w-[125px] items-center gap-[8px] rounded-[6px] border border-[#15518e] bg-[#0a3470] px-[9px]"
+            >
+              <div
+                class="flex h-[29px] w-[29px] shrink-0 items-center justify-center rounded-full border border-[#1595ed]"
+              >
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#50baff"
+                  stroke-width="1.5"
+                >
+                  <circle cx="12" cy="12" r="8" />
+                  <path d="M12 7v10" />
+                  <path
+                    d="M15 9c-.5-1-1.5-1.5-3-1.5S9 8.3 9 9.5s1.2 1.8 3 2.2 3 1 3 2.3-1.2 2.5-3 2.5-2.8-.7-3.2-1.8"
+                  />
+                </svg>
+              </div>
+
+              <div class="min-w-0">
+                <div
+                  class="whitespace-nowrap text-[13px] font-bold leading-none text-white"
+                >
+                  ₹ 5000Cr+
+                </div>
+
+                <div
+                  class="mt-[5px] whitespace-nowrap text-[6px] leading-none text-[#b1c9e6]"
+                >
+                  Transactions Processed
+                </div>
+              </div>
+            </div>
+
+            <!-- 28,000+ -->
+            <div
+              class="flex h-[61px] w-[125px] items-center gap-[8px] rounded-[6px] border border-[#15518e] bg-[#0a3470] px-[9px]"
+            >
+              <div
+                class="flex h-[29px] w-[29px] shrink-0 items-center justify-center rounded-full border border-[#1595ed]"
+              >
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#50baff"
+                  stroke-width="1.5"
+                >
+                  <circle cx="9" cy="8" r="3" />
+                  <circle cx="17" cy="9" r="2.5" />
+                  <path d="M3 20c.6-3.3 2.5-5 6-5s5.4 1.7 6 5" />
+                  <path d="M15 15c2.8.2 4.7 1.8 5 4.5" />
+                </svg>
+              </div>
+
+              <div class="min-w-0">
+                <div
+                  class="whitespace-nowrap text-[13px] font-bold leading-none text-white"
+                >
+                  28,000+
+                </div>
+
+                <div
+                  class="mt-[5px] whitespace-nowrap text-[6px] leading-none text-[#b1c9e6]"
+                >
+                  Active Distributors
+                </div>
+              </div>
+            </div>
+
+            <!-- 750+ -->
+            <div
+              class="flex h-[61px] w-[115px] items-center gap-[8px] rounded-[6px] border border-[#15518e] bg-[#0a3470] px-[9px]"
+            >
+              <div
+                class="flex h-[29px] w-[29px] shrink-0 items-center justify-center rounded-full border border-[#1595ed]"
+              >
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#50baff"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M12 3l7 3v5c0 4.2-2.7 7.6-7 9-4.3-1.4-7-4.8-7-9V6l7-3z"
+                  />
+                  <path d="M12 8v5" />
+                  <circle cx="12" cy="16" r=".5" />
+                </svg>
+              </div>
+
+              <div class="min-w-0">
+                <div class="text-[13px] font-bold leading-none text-white">
+                  750+
+                </div>
+
+                <div
+                  class="mt-[5px] whitespace-nowrap text-[6px] leading-none text-[#b1c9e6]"
+                >
+                  Districts Covered
+                </div>
+              </div>
+            </div>
+
+            <!-- 99.9% -->
+            <div
+              class="flex h-[61px] w-[120px] items-center gap-[8px] rounded-[6px] border border-[#15518e] bg-[#0a3470] px-[9px]"
+            >
+              <div
+                class="flex h-[29px] w-[29px] shrink-0 items-center justify-center rounded-full border border-[#1595ed]"
+              >
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#50baff"
+                  stroke-width="1.5"
+                >
+                  <circle cx="12" cy="12" r="8" />
+                  <path d="M12 8v4l2.5 2" />
+                </svg>
+              </div>
+
+              <div class="min-w-0">
+                <div class="text-[13px] font-bold leading-none text-white">
+                  99.9%
+                </div>
+
+                <div
+                  class="mt-[5px] whitespace-nowrap text-[6px] leading-none text-[#b1c9e6]"
+                >
+                  Uptime &amp; Reliability
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= INDIA ================= -->
+          <div class="ml-auto flex h-[61px] shrink-0 items-center gap-[7px]">
+            <img
+              src="./india-map-figma-transparent.png"
+              alt="India"
+              class="h-[74px] w-[70px] object-contain"
+            />
+
+            <div class="w-[72px]">
+              <div class="text-[12px] font-bold leading-none text-white">
+                Bharat
+              </div>
+
+              <div class="mt-[5px] text-[8px] leading-[1.3] text-[#60b5ff]">
+                Ka Apna<br />
+                Payment Partner
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     SERVICES GRID
+===================================================== -->
+    <!-- SERVICES SECTION -->
+    <section
+      id="services"
+      class="w-full bg-gradient-to-b from-[#f8fcff] via-white to-[#f4faff] px-4 py-8 md:px-8 md:py-10"
+    >
+      <div class="mx-auto max-w-7xl">
+        <!-- HEADER -->
+        <div class="mb-5 flex items-end justify-between">
+          <div>
+            <p
+              class="mb-1.5 text-[11px] font-semibold leading-none text-[#0875e1]"
+            >
+              Our Services
+            </p>
+
+            <h2
+              class="text-[22px] font-extrabold leading-[1.15] tracking-[-0.5px] text-[#102b68] md:text-[24px]"
+            >
+              Complete Payment &amp; Financial Services
+            </h2>
+
+            <p
+              class="mt-1.5 text-[10px] leading-[1.3] text-[#7b8ba3] md:text-[11px]"
+            >
+              Everything your business needs. All in one platform.
+            </p>
+          </div>
+
+          <!-- VIEW ALL -->
+          <a
+            href="#"
+            class="hidden h-[30px] items-center gap-2 rounded-[6px] border border-[#9bc8f5] bg-white px-3.5 text-[9px] font-semibold text-[#0875e1] shadow-sm transition hover:bg-[#f1f8ff] sm:flex"
+          >
+            View All Services
+            <span class="text-[12px] leading-none">→</span>
+          </a>
+        </div>
+
+        <!-- SERVICES GRID -->
+        <div
+          class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8"
+        >
+          <!-- AEPS -->
+          <div
+            class="group flex min-h-[104px] flex-col items-center justify-center rounded-[7px] border border-[#e4edf7] bg-white px-2 py-3 text-center shadow-[0_2px_8px_rgba(20,80,130,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-md"
+          >
+            <div
+              class="mb-2.5 flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#e8f7ff]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#1597e5"
+                stroke-width="1.8"
+              >
+                <path d="M2 8.5C7.5 3.5 16.5 3.5 22 8.5" />
+                <path d="M5 12c3.9-3.5 10.1-3.5 14 0" />
+                <path d="M8.5 15.5c2-1.8 5-1.8 7 0" />
+                <circle cx="12" cy="19" r="1.2" fill="#1597e5" stroke="none" />
+              </svg>
+            </div>
+
+            <p class="text-[10px] font-bold leading-none text-[#19356e]">
+              AEPS
+            </p>
+
+            <p
+              class="mt-2 max-w-[90px] text-[8px] leading-[1.3] text-[#8997aa]"
+            >
+              Aadhaar Enabled<br />
+              Payment System
+            </p>
+          </div>
+
+          <!-- MONEY TRANSFER -->
+          <div
+            class="group flex min-h-[104px] flex-col items-center justify-center rounded-[7px] border border-[#e4edf7] bg-white px-2 py-3 text-center shadow-[0_2px_8px_rgba(20,80,130,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-md"
+          >
+            <div
+              class="mb-2.5 flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#e9fbf1]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#20a866"
+                stroke-width="1.8"
+              >
+                <path d="M7 7h10" />
+                <path d="M17 7l-3-3" />
+                <path d="M17 7l-3 3" />
+                <path d="M17 17H7" />
+                <path d="M7 17l3-3" />
+                <path d="M7 17l3 3" />
+              </svg>
+            </div>
+
+            <p class="text-[10px] font-bold leading-none text-[#19356e]">
+              Money Transfer
+            </p>
+
+            <p
+              class="mt-2 max-w-[90px] text-[8px] leading-[1.3] text-[#8997aa]"
+            >
+              Send money anytime,<br />
+              anywhere
+            </p>
+          </div>
+
+          <!-- BBPS -->
+          <div
+            class="group flex min-h-[104px] flex-col items-center justify-center rounded-[7px] border border-[#e4edf7] bg-white px-2 py-3 text-center shadow-[0_2px_8px_rgba(20,80,130,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-md"
+          >
+            <div
+              class="mb-2.5 flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#fff1ea]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ef7542"
+                stroke-width="1.8"
+              >
+                <rect x="6" y="4" width="12" height="16" rx="2" />
+                <path d="M9 8h6" />
+                <path d="M9 12h6" />
+                <path d="M9 16h3" />
+              </svg>
+            </div>
+
+            <p class="text-[10px] font-bold leading-none text-[#19356e]">
+              BBPS
+            </p>
+
+            <p
+              class="mt-2 max-w-[90px] text-[8px] leading-[1.3] text-[#8997aa]"
+            >
+              Pay all your bills easily
+            </p>
+          </div>
+
+          <!-- MOBILE RECHARGE -->
+          <div
+            class="group flex min-h-[104px] flex-col items-center justify-center rounded-[7px] border border-[#e4edf7] bg-white px-2 py-3 text-center shadow-[0_2px_8px_rgba(20,80,130,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-md"
+          >
+            <div
+              class="mb-2.5 flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#eeeaff]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#6254dc"
+                stroke-width="1.8"
+              >
+                <rect x="7" y="3" width="10" height="18" rx="2" />
+                <path d="M10 6h4" />
+                <circle cx="12" cy="18" r="1" />
+              </svg>
+            </div>
+
+            <p class="text-[10px] font-bold leading-none text-[#19356e]">
+              Mobile Recharge
+            </p>
+
+            <p
+              class="mt-2 max-w-[90px] text-[8px] leading-[1.3] text-[#8997aa]"
+            >
+              All operators &amp; plans
+            </p>
+          </div>
+
+          <!-- INSURANCE -->
+          <div
+            class="group flex min-h-[104px] flex-col items-center justify-center rounded-[7px] border border-[#e4edf7] bg-white px-2 py-3 text-center shadow-[0_2px_8px_rgba(20,80,130,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-md"
+          >
+            <div
+              class="mb-2.5 flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#fff4df]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ee9a28"
+                stroke-width="1.8"
+              >
+                <path
+                  d="M12 3l7 3v5c0 4.3-2.7 7.7-7 10-4.3-2.3-7-5.7-7-10V6l7-3z"
+                />
+                <path d="M12 8v6" />
+                <path d="M9 11h6" />
+              </svg>
+            </div>
+
+            <p class="text-[10px] font-bold leading-none text-[#19356e]">
+              Insurance
+            </p>
+
+            <p
+              class="mt-2 max-w-[90px] text-[8px] leading-[1.3] text-[#8997aa]"
+            >
+              Secure your future
+            </p>
+          </div>
+
+          <!-- MICRO ATM -->
+          <div
+            class="group flex min-h-[104px] flex-col items-center justify-center rounded-[7px] border border-[#e4edf7] bg-white px-2 py-3 text-center shadow-[0_2px_8px_rgba(20,80,130,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-md"
+          >
+            <div
+              class="mb-2.5 flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#f5eaff]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#8a45a8"
+                stroke-width="1.8"
+              >
+                <rect x="5" y="4" width="14" height="16" rx="2" />
+                <rect x="8" y="7" width="8" height="4" rx="1" />
+                <path d="M8 14h2" />
+                <path d="M14 14h2" />
+                <path d="M8 17h2" />
+                <path d="M14 17h2" />
+              </svg>
+            </div>
+
+            <p class="text-[10px] font-bold leading-none text-[#19356e]">
+              Micro-ATM
+            </p>
+
+            <p
+              class="mt-2 max-w-[90px] text-[8px] leading-[1.3] text-[#8997aa]"
+            >
+              Card based banking
+            </p>
+          </div>
+
+          <!-- QR PAYMENTS -->
+          <div
+            class="group flex min-h-[104px] flex-col items-center justify-center rounded-[7px] border border-[#e4edf7] bg-white px-2 py-3 text-center shadow-[0_2px_8px_rgba(20,80,130,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-md"
+          >
+            <div
+              class="mb-2.5 flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#e8f2ff]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#1878dc"
+                stroke-width="1.7"
+              >
+                <rect x="4" y="4" width="6" height="6" rx="1" />
+                <rect x="14" y="4" width="6" height="6" rx="1" />
+                <rect x="4" y="14" width="6" height="6" rx="1" />
+                <path d="M14 14h3v3h-3z" />
+                <path d="M17 17h3v3" />
+              </svg>
+            </div>
+
+            <p class="text-[10px] font-bold leading-none text-[#19356e]">
+              QR Payments
+            </p>
+
+            <p
+              class="mt-2 max-w-[90px] text-[8px] leading-[1.3] text-[#8997aa]"
+            >
+              Accept payments<br />
+              with QR
+            </p>
+          </div>
+
+          <!-- BILL PAYMENTS -->
+          <div
+            class="group flex min-h-[104px] flex-col items-center justify-center rounded-[7px] border border-[#e4edf7] bg-white px-2 py-3 text-center shadow-[0_2px_8px_rgba(20,80,130,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-md"
+          >
+            <div
+              class="mb-2.5 flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#ffe9ee]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#e83d58"
+                stroke-width="1.8"
+              >
+                <rect x="6" y="3" width="12" height="18" rx="2" />
+                <path d="M9 8h6" />
+                <path d="M9 12h6" />
+                <path d="M9 16h4" />
+              </svg>
+            </div>
+
+            <p class="text-[10px] font-bold leading-none text-[#19356e]">
+              Bill Payments
+            </p>
+
+            <p
+              class="mt-2 max-w-[90px] text-[8px] leading-[1.3] text-[#8997aa]"
+            >
+              Electricity, Gas,<br />
+              Water &amp; more
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     BUSINESS SOLUTIONS (RETAILERS/DISTRIBUTORS + DASHBOARD)
+===================================================== -->
+    <!-- =========================================================
+     BUSINESS SOLUTIONS / RETAILERS
+========================================================= -->
+
+    <section
+      id="retailers"
+      class="w-full bg-[#f4f9fd] px-4 py-8 md:px-8 md:py-12"
+    >
+      <div
+        class="relative mx-auto flex w-full max-w-[1180px] flex-col overflow-hidden rounded-[20px] bg-gradient-to-r from-[#fbfdff] via-[#f7fbfe] to-[#edf6fe] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.03)] lg:h-[460px] lg:flex-row lg:items-center lg:p-0"
+      >
+        <!-- =====================================================
+         LEFT CONTENT
+    ====================================================== -->
+        <div
+          class="relative z-20 flex w-full flex-col justify-center lg:w-[46%] lg:py-8 lg:pl-10 lg:pr-4"
+        >
+          <!-- LABEL -->
+          <span class="text-[13px] font-semibold text-[#0066FF] tracking-wide">
+            Business Solutions
+          </span>
+
+          <!-- HEADING -->
+          <h2
+            class="mt-2 text-[22px] font-extrabold leading-[1.25] tracking-[-0.3px] text-[#0d234a] sm:text-[25px]"
+          >
+            Built for Retailers. Designed for Distributors.
+          </h2>
+
+          <!-- DESCRIPTION -->
+          <p
+            class="mt-2.5 max-w-[420px] text-[13px] font-normal leading-[1.5] text-[#5e718d]"
+          >
+            Powerful tools, higher commissions and real-time tracking to grow
+            your business faster.
+          </p>
+
+          <!-- ===================================================
+           FEATURES LIST
+      ==================================================== -->
+          <div class="mt-5 space-y-3">
+            <!-- 01 -->
+            <div class="flex items-center gap-3">
+              <span
+                class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e3efff] text-[#0066FF]"
+              >
+                <svg
+                  class="h-3.5 w-3.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                </svg>
+              </span>
+              <span class="text-[12.5px] font-medium text-[#4a5e78]">
+                Multi-user Retailer Portal
+              </span>
+            </div>
+
+            <!-- 02 -->
+            <div class="flex items-center gap-3">
+              <span
+                class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e3efff] text-[#0066FF]"
+              >
+                <svg
+                  class="h-3.5 w-3.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                  <polyline points="16 7 22 7 22 13" />
+                </svg>
+              </span>
+              <span class="text-[12.5px] font-medium text-[#4a5e78]">
+                Real-time Commission Tracking
+              </span>
+            </div>
+
+            <!-- 03 -->
+            <div class="flex items-center gap-3">
+              <span
+                class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e3efff] text-[#0066FF]"
+              >
+                <svg
+                  class="h-3.5 w-3.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <polyline points="16 11 18 13 22 9" />
+                </svg>
+              </span>
+              <span class="text-[12.5px] font-medium text-[#4a5e78]">
+                Easy KYC &amp; Onboarding
+              </span>
+            </div>
+
+            <!-- 04 -->
+            <div class="flex items-center gap-3">
+              <span
+                class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e3efff] text-[#0066FF]"
+              >
+                <svg
+                  class="h-3.5 w-3.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                </svg>
+              </span>
+              <span class="text-[12.5px] font-medium text-[#4a5e78]">
+                Marketing Support
+              </span>
+            </div>
+
+            <!-- 05 -->
+            <div class="flex items-center gap-3">
+              <span
+                class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e3efff] text-[#0066FF]"
+              >
+                <svg
+                  class="h-3.5 w-3.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </span>
+              <span class="text-[12.5px] font-medium text-[#4a5e78]">
+                Dedicated Relationship Manager
+              </span>
+            </div>
+          </div>
+
+          <!-- ===================================================
+           BUTTON
+      ==================================================== -->
+          <div class="mt-6">
+            <a
+              href="#"
+              class="inline-flex h-[38px] items-center gap-2 rounded-full bg-[#0066FF] px-6 text-[12px] font-semibold text-white shadow-[0_4px_14px_rgba(0,102,255,0.3)] transition duration-200 hover:bg-[#0055d6]"
+            >
+              <span>Get Started</span>
+              <span class="text-sm font-light">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- =====================================================
+         CENTER GRAPHIC (Kirana / Shop Cutout)
+    ====================================================== -->
+        <!-- Put your kiosk/shop cut-out image here -->
+        <div
+          class="pointer-events-none absolute bottom-0 left-[34%] z-10 hidden h-[260px] w-[180px] lg:block"
+        >
+          <img
+            src="./retailer-shop.png"
+            alt="Retailer kiosk"
+            class="h-full w-full object-contain object-bottom"
+            onerror="this.style.display = 'none'"
+          />
+        </div>
+
+        <!-- =====================================================
+         RIGHT SIDE DASHBOARD MOCKUP
+    ====================================================== -->
+        <div
+          class="relative z-10 mt-8 flex h-[340px] w-full items-end justify-end overflow-hidden lg:mt-0 lg:h-full lg:w-[54%]"
+        >
+          <!-- Soft ambient backdrop glow -->
+          <div
+            class="absolute -right-10 top-12 h-[280px] w-[340px] rounded-full bg-[#cdeaff]/50 blur-2xl"
+          ></div>
+
+          <!-- Browser Frame / App Screen -->
+          <div
+            class="relative mr-[-10px] top-6 w-[108%] rounded-tl-xl border-[7px] border-b-0 border-[#122854] bg-white shadow-[-16px_12px_32px_rgba(18,40,84,0.12)] lg:top-8"
+          >
+            <img
+              src="./bingopay-premium-dashboard.svg"
+              alt="BingoPay Retailer Dashboard"
+              class="block w-full object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- =====================================================
+     WHY CHOOSE BINGOPAY
+===================================================== -->
+    <!-- =========================================================
+     WHY CHOOSE BINGOPAY
+========================================================= -->
+
+    <section id="why" class="w-full bg-[#f4f9fd] px-4 py-8 md:px-8 md:py-10">
+      <div
+        class="mx-auto flex max-w-[1180px] flex-col gap-4 lg:flex-row lg:items-stretch"
+      >
+        <!-- =====================================================
+         LEFT CARD
+    ====================================================== -->
+
+        <div
+          class="flex flex-1 flex-col rounded-[10px] border border-[#e5eef8] bg-gradient-to-r from-[#fbfdff] via-[#f8fbfe] to-[#eef7ff] px-5 py-5 shadow-[0_3px_15px_rgba(16,43,104,0.035)] sm:px-6 sm:py-6 lg:w-[65%]"
+        >
+          <!-- HEADER -->
+          <div>
+            <!-- LABEL -->
+            <p class="text-[10px] font-semibold leading-none text-[#0875e1]">
+              Why Choose BingoPay
+            </p>
+
+            <!-- TITLE -->
+            <h2
+              class="mt-[5px] text-[21px] font-extrabold leading-[1.12] tracking-[-0.5px] text-[#102b68] sm:text-[23px]"
+            >
+              Trusted. Secure. Future Ready.
+            </h2>
+
+            <!-- DESCRIPTION -->
+            <p
+              class="mt-[5px] max-w-[560px] text-[10px] leading-[1.4] text-[#667b97] sm:text-[10.5px]"
+            >
+              We combine technology, compliance and customer support to give you
+              a worry-free payment experience.
+            </p>
+          </div>
+
+          <!-- ===================================================
+           FEATURE CARDS
+      ==================================================== -->
+
+          <div class="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <!-- =================================================
+             RBI COMPLIANT
+        ================================================== -->
+
+            <div
+              class="flex min-h-[91px] flex-col items-center justify-center rounded-[8px] border border-[#dfebf7] bg-white px-2 py-3 text-center shadow-[0_2px_7px_rgba(16,43,104,0.025)] transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <span
+                class="mb-[8px] flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#ddecff] text-[#0875e1]"
+              >
+                <svg
+                  class="h-[15px] w-[15px]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="M9 12h6" />
+                  <path d="M12 9v6" />
+                </svg>
+              </span>
+
+              <p class="text-[10px] font-bold leading-none text-[#102b68]">
+                RBI Compliant
+              </p>
+
+              <p class="mt-[5px] text-[8px] leading-none text-[#7a8ea8]">
+                100% secure platform
+              </p>
+            </div>
+
+            <!-- =================================================
+             BANK LEVEL SECURITY
+        ================================================== -->
+
+            <div
+              class="flex min-h-[91px] flex-col items-center justify-center rounded-[8px] border border-[#dfebf7] bg-white px-2 py-3 text-center shadow-[0_2px_7px_rgba(16,43,104,0.025)] transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <span
+                class="mb-[8px] flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#ddecff] text-[#0875e1]"
+              >
+                <svg
+                  class="h-[15px] w-[15px]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+              </span>
+
+              <p class="text-[10px] font-bold leading-none text-[#102b68]">
+                Bank Level Security
+              </p>
+
+              <p class="mt-[5px] text-[8px] leading-none text-[#7a8ea8]">
+                End-to-end encryption
+              </p>
+            </div>
+
+            <!-- =================================================
+             INSTANT SUPPORT
+        ================================================== -->
+
+            <div
+              class="flex min-h-[91px] flex-col items-center justify-center rounded-[8px] border border-[#dfebf7] bg-white px-2 py-3 text-center shadow-[0_2px_7px_rgba(16,43,104,0.025)] transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <span
+                class="mb-[8px] flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#ddecff] text-[#0875e1]"
+              >
+                <svg
+                  class="h-[15px] w-[15px]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M3 12a9 9 0 1 0 9-9
+                   9.75 9.75 0 0 0-6.74 2.74L3 8"
+                  />
+                  <path d="M3 3v5h5" />
+                  <path d="M12 7v5l3 3" />
+                </svg>
+              </span>
+
+              <p class="text-[10px] font-bold leading-none text-[#102b68]">
+                Instant Support
+              </p>
+
+              <p class="mt-[5px] text-[8px] leading-none text-[#7a8ea8]">
+                Dedicated helpdesk
+              </p>
+            </div>
+
+            <!-- =================================================
+             99.9% UPTIME
+        ================================================== -->
+
+            <div
+              class="flex min-h-[91px] flex-col items-center justify-center rounded-[8px] border border-[#dfebf7] bg-white px-2 py-3 text-center shadow-[0_2px_7px_rgba(16,43,104,0.025)] transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <span
+                class="mb-[8px] flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#ddecff] text-[#0875e1]"
+              >
+                <svg
+                  class="h-[15px] w-[15px]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="4" y="4" width="16" height="16" rx="2" />
+                  <path d="M9 9h6" />
+                  <path d="M9 13h6" />
+                  <path d="M9 17h4" />
+                </svg>
+              </span>
+
+              <p class="text-[10px] font-bold leading-none text-[#102b68]">
+                99.9% Uptime
+              </p>
+
+              <p class="mt-[5px] text-[8px] leading-none text-[#7a8ea8]">
+                Reliable &amp; always on
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- =====================================================
+         RIGHT SECURITY CARD
+    ====================================================== -->
+
+        <div
+          class="relative min-h-[205px] w-full overflow-hidden rounded-[10px] bg-gradient-to-br from-[#2478ff] via-[#105edf] to-[#044bc4] px-5 py-5 text-white shadow-[0_7px_20px_rgba(4,75,196,0.16)] lg:w-[35%]"
+        >
+          <!-- =================================================
+           SECURITY IMAGE
+      ================================================== -->
+
+          <img
+            src="./security-hand-shield.png"
+            alt="Secure Payment"
+            class="pointer-events-none absolute right-0 top-0 h-full w-[72%] object-cover object-right opacity-80"
+          />
+
+          <!-- BLUE OVERLAY -->
+          <div
+            class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#1767ed] via-[#1767ed]/70 to-transparent"
+          ></div>
+
+          <!-- CONTENT -->
+          <div class="relative z-10">
+            <!-- TITLE -->
+            <h3
+              class="text-[17px] font-extrabold leading-[1.15] tracking-[-0.2px]"
+            >
+              Your Business<br />
+              Our Priority
+            </h3>
+
+            <!-- CHECKLIST -->
+            <ul class="mt-4 space-y-[9px]">
+              <!-- 01 -->
+              <li
+                class="flex items-center gap-2 text-[9px] font-medium leading-none"
+              >
+                <span
+                  class="flex h-[16px] w-[16px] shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/15 text-[9px]"
+                >
+                  ✓
+                </span>
+
+                <span> Secure Transactions </span>
+              </li>
+
+              <!-- 02 -->
+              <li
+                class="flex items-center gap-2 text-[9px] font-medium leading-none"
+              >
+                <span
+                  class="flex h-[16px] w-[16px] shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/15 text-[9px]"
+                >
+                  ✓
+                </span>
+
+                <span> Data Privacy </span>
+              </li>
+
+              <!-- 03 -->
+              <li
+                class="flex items-center gap-2 text-[9px] font-medium leading-none"
+              >
+                <span
+                  class="flex h-[16px] w-[16px] shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/15 text-[9px]"
+                >
+                  ✓
+                </span>
+
+                <span> Fraud Monitoring </span>
+              </li>
+
+              <!-- 04 -->
+              <li
+                class="flex items-center gap-2 text-[9px] font-medium leading-none"
+              >
+                <span
+                  class="flex h-[16px] w-[16px] shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/15 text-[9px]"
+                >
+                  ✓
+                </span>
+
+                <span> Safe &amp; Compliant </span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- BOTTOM GLOW -->
+          <div
+            class="pointer-events-none absolute -bottom-10 -right-8 h-[150px] w-[150px] rounded-full bg-[#38bdf8]/30 blur-3xl"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     HOW IT WORKS (4 STEPS)
+===================================================== -->
+    <!-- =========================================================
+     HOW IT WORKS
+========================================================= -->
+
+    <section id="how-it-works" class="w-full bg-white px-4 py-6 md:px-8">
+      <div
+        class="mx-auto flex w-full max-w-[1180px] items-center rounded-[10px] border border-[#edf3f9] bg-white px-5 py-4 shadow-[0_2px_12px_rgba(16,43,104,0.025)] lg:px-6"
+      >
+        <!-- =====================================================
+         LEFT CONTENT
+    ====================================================== -->
+
+        <div class="min-w-0 flex-1">
+          <!-- Heading -->
+          <div class="mb-3">
+            <p class="text-[9px] font-semibold leading-none text-[#0875e1]">
+              How It Works
+            </p>
+
+            <h2
+              class="mt-[5px] text-[18px] font-extrabold leading-none tracking-[-0.35px] text-[#102b68] sm:text-[19px]"
+            >
+              Get Started in 4 Simple Steps
+            </h2>
+          </div>
+
+          <!-- ===================================================
+           STEPS
+      ==================================================== -->
+
+          <div class="flex w-full items-stretch gap-0">
+            <!-- =================================================
+             STEP 01
+        ================================================== -->
+
+            <div
+              class="relative flex h-[82px] flex-1 items-center rounded-[8px] border border-[#e5eef8] bg-white px-3 py-2 shadow-[0_2px_8px_rgba(16,43,104,0.025)]"
+            >
+              <!-- Number -->
+              <span
+                class="flex h-[35px] w-[35px] shrink-0 items-center justify-center rounded-full bg-[#e8f3ff] text-[12px] font-bold text-[#0875e1]"
+              >
+                01
+              </span>
+
+              <!-- Text -->
+              <div class="ml-3">
+                <p class="text-[10px] font-bold leading-none text-[#102b68]">
+                  Register
+                </p>
+
+                <p
+                  class="mt-[5px] max-w-[85px] text-[8px] leading-[1.3] text-[#7a8ea8]"
+                >
+                  Create your account in minutes
+                </p>
+              </div>
+            </div>
+
+            <!-- Arrow 01 -->
+            <div class="flex w-[25px] shrink-0 items-center justify-center">
+              <span class="text-[13px] font-bold text-[#0875e1]"> › </span>
+            </div>
+
+            <!-- =================================================
+             STEP 02
+        ================================================== -->
+
+            <div
+              class="relative flex h-[82px] flex-1 items-center rounded-[8px] border border-[#e5eef8] bg-white px-3 py-2 shadow-[0_2px_8px_rgba(16,43,104,0.025)]"
+            >
+              <!-- Number -->
+              <span
+                class="flex h-[35px] w-[35px] shrink-0 items-center justify-center rounded-full bg-[#e8f3ff] text-[12px] font-bold text-[#0875e1]"
+              >
+                02
+              </span>
+
+              <!-- Text -->
+              <div class="ml-3">
+                <p class="text-[10px] font-bold leading-none text-[#102b68]">
+                  Complete KYC
+                </p>
+
+                <p
+                  class="mt-[5px] max-w-[90px] text-[8px] leading-[1.3] text-[#7a8ea8]"
+                >
+                  Verify your identity securely
+                </p>
+              </div>
+            </div>
+
+            <!-- Arrow 02 -->
+            <div class="flex w-[25px] shrink-0 items-center justify-center">
+              <span class="text-[13px] font-bold text-[#0875e1]"> › </span>
+            </div>
+
+            <!-- =================================================
+             STEP 03
+        ================================================== -->
+
+            <div
+              class="relative flex h-[82px] flex-1 items-center rounded-[8px] border border-[#e5eef8] bg-white px-3 py-2 shadow-[0_2px_8px_rgba(16,43,104,0.025)]"
+            >
+              <!-- Number / Icon -->
+              <span
+                class="flex h-[35px] w-[35px] shrink-0 items-center justify-center rounded-full bg-[#e8f3ff] text-[#0875e1]"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="M3 10h18" />
+                  <path d="M7 15h4" />
+                </svg>
+              </span>
+
+              <!-- Text -->
+              <div class="ml-3">
+                <p class="text-[10px] font-bold leading-none text-[#102b68]">
+                  Add Money
+                </p>
+
+                <p
+                  class="mt-[5px] max-w-[90px] text-[8px] leading-[1.3] text-[#7a8ea8]"
+                >
+                  Load wallet or connect bank
+                </p>
+              </div>
+            </div>
+
+            <!-- Arrow 03 -->
+            <div class="flex w-[25px] shrink-0 items-center justify-center">
+              <span class="text-[13px] font-bold text-[#0875e1]"> › </span>
+            </div>
+
+            <!-- =================================================
+             STEP 04
+        ================================================== -->
+
+            <div
+              class="relative flex h-[82px] flex-1 items-center rounded-[8px] border border-[#e5eef8] bg-white px-3 py-2 shadow-[0_2px_8px_rgba(16,43,104,0.025)]"
+            >
+              <!-- Number -->
+              <span
+                class="flex h-[35px] w-[35px] shrink-0 items-center justify-center rounded-full bg-[#e8f3ff] text-[12px] font-bold text-[#0875e1]"
+              >
+                04
+              </span>
+
+              <!-- Text -->
+              <div class="ml-3">
+                <p class="text-[10px] font-bold leading-none text-[#102b68]">
+                  Start Transacting
+                </p>
+
+                <p
+                  class="mt-[5px] max-w-[100px] text-[8px] leading-[1.3] text-[#7a8ea8]"
+                >
+                  Use all services and grow your business
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =====================================================
+         RIGHT HANDWRITTEN MESSAGE
+    ====================================================== -->
+
+        <div
+          class="hidden w-[135px] shrink-0 items-center justify-center lg:flex"
+        >
+          <div class="relative -rotate-[4deg] text-center">
+            <p
+              class="font-[cursive] text-[15px] font-semibold leading-[1.05] text-[#315fbe]"
+            >
+              Simple<br />
+              Secure<br />
+              Seamless
+            </p>
+
+            <!-- Curved arrow -->
+            <svg
+              class="absolute -bottom-[17px] right-[-14px] h-[30px] w-[75px]"
+              viewBox="0 0 90 40"
+              fill="none"
+            >
+              <path
+                d="M4 31
+               C25 35 50 30 69 10"
+                stroke="#0875e1"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+
+              <path
+                d="M61 10
+               L72 8
+               L68 19"
+                stroke="#0875e1"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     FEATURE PAIRS (AEPS / MONEY TRANSFER / DASHBOARD / APP)
+===================================================== -->
+    <!-- =========================================================
+     FEATURED SERVICES
+========================================================= -->
+
+    <section
+      id="featured-services"
+      class="w-full bg-white px-4 py-7 md:px-8 md:py-10"
+    >
+      <div
+        class="mx-auto grid w-full max-w-[1180px] grid-cols-1 gap-4 md:grid-cols-2"
+      >
+        <!-- =====================================================
+         CARD 01 — AEPS
+    ====================================================== -->
+
+        <div
+          class="relative flex min-h-[155px] overflow-hidden rounded-[10px] border border-[#e7f0f8] bg-gradient-to-br from-[#fbfdff] via-white to-[#eef8ff] px-5 py-4 shadow-[0_3px_12px_rgba(16,43,104,0.035)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(16,43,104,0.08)]"
+        >
+          <!-- Soft background glow -->
+          <div
+            class="pointer-events-none absolute right-[90px] top-[40px] h-[90px] w-[120px] rounded-full bg-[#dff3ff] blur-2xl"
+          ></div>
+
+          <!-- LEFT CONTENT -->
+          <div class="relative z-10 w-[57%]">
+            <!-- Icon -->
+            <div class="mb-1.5 flex items-center gap-2">
+              <span
+                class="flex h-[24px] w-[24px] items-center justify-center rounded-full bg-[#e8f4ff]"
+              >
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0875e1"
+                  stroke-width="2"
+                >
+                  <path d="M12 3a7 7 0 0 0-7 7" />
+                  <path d="M12 7a3 3 0 0 0-3 3" />
+                  <path d="M12 3a7 7 0 0 1 7 7" />
+                  <path d="M12 7a3 3 0 0 1 3 3" />
+                  <circle cx="12" cy="15" r="1.5" />
+                </svg>
+              </span>
+
+              <h3
+                class="text-[13px] font-extrabold leading-none text-[#102b68]"
+              >
+                AEPS - Banking at Your Fingertips
+              </h3>
+            </div>
+
+            <!-- Features -->
+            <ul
+              class="mt-2 space-y-[5px] text-[8.5px] leading-none text-[#667b97]"
+            >
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Cash Withdrawal
+              </li>
+
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Balance Enquiry
+              </li>
+
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Mini Statement
+              </li>
+
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Aadhaar Pay
+              </li>
+            </ul>
+
+            <!-- Button -->
+            <button
+              type="button"
+              class="mt-3 inline-flex h-[24px] items-center gap-2 rounded-[5px] bg-[#0875e1] px-3 text-[8px] font-semibold text-white shadow-[0_4px_10px_rgba(8,117,225,0.2)] transition hover:bg-[#0564c5]"
+            >
+              Know More
+              <span class="text-[10px]">→</span>
+            </button>
+          </div>
+
+          <!-- RIGHT VISUAL -->
+          <div
+            class="absolute bottom-0 right-0 flex h-full w-[43%] items-center justify-end"
+          >
+            <img
+              src="./aeps-machine.png"
+              alt="AEPS Banking"
+              class="relative z-10 h-[118px] w-auto max-w-full object-contain object-right mix-blend-multiply"
+            />
+          </div>
+        </div>
+
+        <!-- =====================================================
+         CARD 02 — MONEY TRANSFER
+    ====================================================== -->
+
+        <div
+          class="relative flex min-h-[155px] overflow-hidden rounded-[10px] border border-[#e7f0f8] bg-gradient-to-br from-[#fbfdff] via-white to-[#eef8ff] px-5 py-4 shadow-[0_3px_12px_rgba(16,43,104,0.035)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(16,43,104,0.08)]"
+        >
+          <!-- Glow -->
+          <div
+            class="pointer-events-none absolute right-[80px] top-[30px] h-[105px] w-[145px] rounded-full bg-[#dff3ff] blur-2xl"
+          ></div>
+
+          <!-- CONTENT -->
+          <div class="relative z-10 w-[58%]">
+            <div class="flex items-center gap-2">
+              <span
+                class="flex h-[24px] w-[24px] shrink-0 items-center justify-center rounded-full bg-[#e8f4ff]"
+              >
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0875e1"
+                  stroke-width="2"
+                >
+                  <rect x="4" y="4" width="16" height="16" rx="3" />
+                  <path d="M8 12h8" />
+                  <path d="M12 8l4 4-4 4" />
+                </svg>
+              </span>
+
+              <h3
+                class="text-[13px] font-extrabold leading-[1.05] text-[#102b68]"
+              >
+                Money Transfer &amp; Mobile Recharge
+              </h3>
+            </div>
+
+            <ul
+              class="mt-2 space-y-[5px] text-[8.5px] leading-none text-[#667b97]"
+            >
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Instant Bank Transfer (IMPS/NEFT/UPI)
+              </li>
+
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                All Mobile &amp; DTH Recharge
+              </li>
+
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Over 500+ Billers on BBPS
+              </li>
+
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                High Success Rate
+              </li>
+            </ul>
+
+            <button
+              type="button"
+              class="mt-3 inline-flex h-[24px] items-center gap-2 rounded-[5px] bg-[#0875e1] px-3 text-[8px] font-semibold text-white shadow-[0_4px_10px_rgba(8,117,225,0.2)] transition hover:bg-[#0564c5]"
+            >
+              Explore Now
+              <span class="text-[10px]">→</span>
+            </button>
+          </div>
+
+          <!-- VISUAL -->
+          <div
+            class="absolute bottom-0 right-0 flex h-full w-[43%] items-center justify-end"
+          >
+            <img
+              src="./transfer-mobile.png"
+              alt="Money Transfer and Mobile Recharge"
+              class="relative z-10 h-[137px] w-auto max-w-full object-contain object-right mix-blend-multiply"
+            />
+          </div>
+        </div>
+
+        <!-- =====================================================
+         CARD 03 — BUSINESS DASHBOARD
+    ====================================================== -->
+
+        <div
+          class="relative flex min-h-[155px] overflow-hidden rounded-[10px] border border-[#e7f0f8] bg-gradient-to-br from-[#fbfdff] via-white to-[#eef8ff] px-5 py-4 shadow-[0_3px_12px_rgba(16,43,104,0.035)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(16,43,104,0.08)]"
+        >
+          <!-- CONTENT -->
+          <div class="relative z-10 w-[57%]">
+            <div class="flex items-center gap-2">
+              <span
+                class="flex h-[24px] w-[24px] shrink-0 items-center justify-center rounded-full bg-[#e8f4ff]"
+              >
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0875e1"
+                  stroke-width="2"
+                >
+                  <rect x="4" y="4" width="16" height="16" rx="2" />
+                  <path d="M8 16V12" />
+                  <path d="M12 16V9" />
+                  <path d="M16 16V6" />
+                </svg>
+              </span>
+
+              <h3
+                class="text-[13px] font-extrabold leading-[1.05] text-[#102b68]"
+              >
+                Real-time Business Dashboard
+              </h3>
+            </div>
+
+            <p class="mt-1 text-[8px] text-[#6f829c]">
+              Track Your Growth, Live
+            </p>
+
+            <ul
+              class="mt-2 space-y-[5px] text-[8.5px] leading-none text-[#667b97]"
+            >
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Sales &amp; Commission Report
+              </li>
+
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Transaction History
+              </li>
+
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Download Statements
+              </li>
+
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Manage Users
+              </li>
+            </ul>
+
+            <button
+              type="button"
+              class="mt-3 inline-flex h-[24px] items-center gap-2 rounded-[5px] bg-[#0875e1] px-3 text-[8px] font-semibold text-white shadow-[0_4px_10px_rgba(8,117,225,0.2)] transition hover:bg-[#0564c5]"
+            >
+              View Dashboard
+              <span class="text-[10px]">→</span>
+            </button>
+          </div>
+
+          <!-- DASHBOARD IMAGE -->
+          <div
+            class="absolute bottom-0 right-0 flex h-full w-[48%] items-center justify-end"
+          >
+            <img
+              src="./business-dashboard.png"
+              alt="Business Dashboard"
+              class="h-[150px] w-auto max-w-full object-contain object-right"
+            />
+          </div>
+        </div>
+
+        <!-- =====================================================
+         CARD 04 — MOBILE APP
+    ====================================================== -->
+
+        <div
+          class="relative flex min-h-[155px] overflow-hidden rounded-[10px] border border-[#e7f0f8] bg-gradient-to-br from-[#fbfdff] via-white to-[#eef8ff] px-5 py-4 shadow-[0_3px_12px_rgba(16,43,104,0.035)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(16,43,104,0.08)]"
+        >
+          <!-- CONTENT -->
+          <div class="relative z-10 w-[57%]">
+            <div class="flex items-center gap-2">
+              <span
+                class="flex h-[24px] w-[24px] shrink-0 items-center justify-center rounded-full bg-[#e8f4ff]"
+              >
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0875e1"
+                  stroke-width="2"
+                >
+                  <rect x="6" y="3" width="12" height="18" rx="2" />
+                  <path d="M10 6h4" />
+                  <circle cx="12" cy="18" r="1" />
+                </svg>
+              </span>
+
+              <h3
+                class="text-[13px] font-extrabold leading-[1.05] text-[#102b68]"
+              >
+                BingoPay Mobile App
+              </h3>
+            </div>
+
+            <p class="mt-1 text-[8px] text-[#6f829c]">
+              Your Business in Your Pocket
+            </p>
+
+            <ul
+              class="mt-2 space-y-[5px] text-[8.5px] leading-none text-[#667b97]"
+            >
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                All Services in One App
+              </li>
+
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Fast, Secure &amp; Easy to Use
+              </li>
+
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Available on Android
+              </li>
+
+              <li class="flex items-center gap-1.5">
+                <span class="text-[#28b77a]">✓</span>
+                Manage Business On The Go
+              </li>
+            </ul>
+
+            <button
+              type="button"
+              class="mt-3 inline-flex h-[24px] items-center gap-2 rounded-[5px] bg-[#0875e1] px-3 text-[8px] font-semibold text-white shadow-[0_4px_10px_rgba(8,117,225,0.2)] transition hover:bg-[#0564c5]"
+            >
+              Download App
+              <span class="text-[10px]">→</span>
+            </button>
+          </div>
+
+          <!-- MOBILE VISUAL -->
+          <div
+            class="absolute bottom-0 right-0 flex h-full w-[46%] items-center justify-end"
+          >
+            <img
+              src="./bingopay-mobile-app.png"
+              alt="BingoPay Mobile App"
+              class="h-[155px] w-auto max-w-full object-contain object-right"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- =====================================================
+     BENEFITS + TESTIMONIAL
+===================================================== -->
+    <section
+      id="distributors"
+      class="max-w-7xl mx-auto px-4 md:px-10 pb-16 grid md:grid-cols-2 gap-6"
+    >
+      <div class="border border-slate-100 rounded-2xl p-6">
+        <p class="font-bold text-bingo-navy mb-4">
+          📈 Benefits for Retailers &amp; Distributors
+        </p>
+        <p class="text-xs text-slate-500 mb-4">
+          More Earnings. More Opportunities.
+        </p>
+        <div
+          class="grid grid-cols-2 gap-4 text-xs font-semibold text-slate-600"
+        >
+          <div class="p-3 border border-slate-100 rounded-lg text-center">
+            💰
+            <p class="mt-1">Attractive Commission</p>
+          </div>
+          <div class="p-3 border border-slate-100 rounded-lg text-center">
+            🧾
+            <p class="mt-1">Wide Range of Services</p>
+          </div>
+          <div class="p-3 border border-slate-100 rounded-lg text-center">
+            📣
+            <p class="mt-1">Marketing Support</p>
+          </div>
+          <div class="p-3 border border-slate-100 rounded-lg text-center">
+            🎧
+            <p class="mt-1">Dedicated Support</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-slate-100 rounded-2xl p-6">
+        <p class="font-bold text-bingo-navy mb-4">💬 What Our Partners Say</p>
+        <p class="text-xs text-slate-500 mb-4">Real Stories. Real Growth.</p>
+        <div class="flex items-center gap-4 bg-slate-50 rounded-xl p-4">
+          <div
+            class="w-14 h-14 rounded-full bg-slate-200 flex items-center justify-center text-2xl shrink-0"
+          >
+            🧑
+          </div>
+          <div>
+            <p class="text-xs text-slate-600 italic">
+              "BingoPay has made my business so much easier. The services are
+              reliable and the support team is excellent. My income has grown
+              significantly!"
+            </p>
+            <p class="text-xs font-semibold text-bingo-navy mt-2">
+              ⭐⭐⭐⭐⭐ Ramesh Kumar
+              <span class="font-normal text-slate-400">· Retailer, Odisha</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     DIGITAL SERVICES ECOSYSTEM
+===================================================== -->
+    <!-- =========================================================
+     MORE THAN PAYMENTS / DIGITAL SERVICES ECOSYSTEM
+========================================================= -->
+
+    <section
+      id="digital-services"
+      class="w-full bg-white px-4 py-7 md:px-8 md:py-9"
+    >
+      <div class="mx-auto w-full max-w-[1180px]">
+        <!-- =====================================================
+         SECTION HEADER
+    ====================================================== -->
+
+        <div class="mb-4">
+          <p class="text-[10px] font-semibold leading-none text-[#0875e1]">
+            More Than Payments
+          </p>
+
+          <h2
+            class="mt-[5px] text-[20px] font-extrabold leading-[1.1] tracking-[-0.4px] text-[#102b68] sm:text-[22px]"
+          >
+            A Complete Digital Services Ecosystem
+          </h2>
+
+          <p
+            class="mt-[4px] max-w-[520px] text-[9px] leading-[1.35] text-[#71829a]"
+          >
+            Give your customers more, and grow your business with our extended
+            services.
+          </p>
+        </div>
+
+        <!-- =====================================================
+         SERVICES GRID
+    ====================================================== -->
+
+        <div class="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
+          <!-- ===================================================
+           01 FLIGHT BOOKING
+      ==================================================== -->
+
+          <div
+            class="group flex h-[102px] flex-col items-center justify-center rounded-[8px] border border-[#e5eef7] bg-white px-2 text-center shadow-[0_2px_8px_rgba(16,43,104,0.025)] transition duration-300 hover:-translate-y-0.5 hover:border-[#cfe6fb] hover:shadow-[0_7px_18px_rgba(16,43,104,0.07)]"
+          >
+            <div
+              class="mb-[7px] flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#eef7ff]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#405b80"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M2 16l20-8" />
+                <path d="M9 13l-3-7 2-1 6 6" />
+                <path d="M13 11l5 5-1 2-7-4" />
+              </svg>
+            </div>
+
+            <p class="text-[9px] font-bold leading-none text-[#102b68]">
+              Flight Booking
+            </p>
+
+            <p class="mt-[5px] text-[7px] leading-[1.2] text-[#7a8ea8]">
+              Domestic &amp; International
+            </p>
+          </div>
+
+          <!-- ===================================================
+           02 HOTEL BOOKING
+      ==================================================== -->
+
+          <div
+            class="group flex h-[102px] flex-col items-center justify-center rounded-[8px] border border-[#e5eef7] bg-white px-2 text-center shadow-[0_2px_8px_rgba(16,43,104,0.025)] transition duration-300 hover:-translate-y-0.5 hover:border-[#cfe6fb] hover:shadow-[0_7px_18px_rgba(16,43,104,0.07)]"
+          >
+            <div
+              class="mb-[7px] flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#eef7ff]"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#0875e1"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 21h18" />
+                <path d="M5 21V8l7-5 7 5v13" />
+                <path d="M8 10h2" />
+                <path d="M14 10h2" />
+                <path d="M8 14h2" />
+                <path d="M14 14h2" />
+                <path d="M10 21v-4h4v4" />
+              </svg>
+            </div>
+
+            <p class="text-[9px] font-bold leading-none text-[#102b68]">
+              Hotel Booking
+            </p>
+
+            <p class="mt-[5px] text-[7px] leading-[1.2] text-[#7a8ea8]">
+              Best deals worldwide
+            </p>
+          </div>
+
+          <!-- ===================================================
+           03 IRCTC
+      ==================================================== -->
+
+          <div
+            class="group flex h-[102px] flex-col items-center justify-center rounded-[8px] border border-[#e5eef7] bg-white px-2 text-center shadow-[0_2px_8px_rgba(16,43,104,0.025)] transition duration-300 hover:-translate-y-0.5 hover:border-[#cfe6fb] hover:shadow-[0_7px_18px_rgba(16,43,104,0.07)]"
+          >
+            <div
+              class="mb-[7px] flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#eef7ff]"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#102b68"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="5" y="4" width="14" height="14" rx="3" />
+                <path d="M8 8h8" />
+                <path d="M8 12h8" />
+                <path d="M9 18l-2 3" />
+                <path d="M15 18l2 3" />
+                <circle cx="9" cy="15" r="1" />
+                <circle cx="15" cy="15" r="1" />
+              </svg>
+            </div>
+
+            <p class="text-[9px] font-bold leading-none text-[#102b68]">
+              IRCTC Ticket Booking
+            </p>
+
+            <p class="mt-[5px] text-[7px] leading-[1.2] text-[#7a8ea8]">
+              Train tickets made easy
+            </p>
+          </div>
+
+          <!-- ===================================================
+           04 CREDIT CARD
+      ==================================================== -->
+
+          <div
+            class="group flex h-[102px] flex-col items-center justify-center rounded-[8px] border border-[#e5eef7] bg-white px-2 text-center shadow-[0_2px_8px_rgba(16,43,104,0.025)] transition duration-300 hover:-translate-y-0.5 hover:border-[#cfe6fb] hover:shadow-[0_7px_18px_rgba(16,43,104,0.07)]"
+          >
+            <div
+              class="mb-[7px] flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#eef7ff]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#0875e1"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="6" width="18" height="12" rx="2" />
+                <path d="M3 10h18" />
+                <path d="M7 14h4" />
+              </svg>
+            </div>
+
+            <p class="text-[9px] font-bold leading-none text-[#102b68]">
+              Credit Card Payment
+            </p>
+
+            <p class="mt-[5px] text-[7px] leading-[1.2] text-[#7a8ea8]">
+              Pay your bills securely
+            </p>
+          </div>
+
+          <!-- ===================================================
+           05 DTH
+      ==================================================== -->
+
+          <div
+            class="group flex h-[102px] flex-col items-center justify-center rounded-[8px] border border-[#e5eef7] bg-white px-2 text-center shadow-[0_2px_8px_rgba(16,43,104,0.025)] transition duration-300 hover:-translate-y-0.5 hover:border-[#cfe6fb] hover:shadow-[0_7px_18px_rgba(16,43,104,0.07)]"
+          >
+            <div
+              class="mb-[7px] flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#eef7ff]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#405b80"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path d="M12 9V4" />
+                <path d="M12 4l3-2" />
+                <path d="M12 4L9 2" />
+                <path d="M7 12a5 5 0 0 0-2.5 4.3" />
+                <path d="M17 12a5 5 0 0 1 2.5 4.3" />
+              </svg>
+            </div>
+
+            <p class="text-[9px] font-bold leading-none text-[#102b68]">
+              DTH Recharge
+            </p>
+
+            <p class="mt-[5px] text-[7px] leading-[1.2] text-[#7a8ea8]">
+              All DTH operators
+            </p>
+          </div>
+
+          <!-- ===================================================
+           06 OTT
+      ==================================================== -->
+
+          <div
+            class="group flex h-[102px] flex-col items-center justify-center rounded-[8px] border border-[#e5eef7] bg-white px-2 text-center shadow-[0_2px_8px_rgba(16,43,104,0.025)] transition duration-300 hover:-translate-y-0.5 hover:border-[#cfe6fb] hover:shadow-[0_7px_18px_rgba(16,43,104,0.07)]"
+          >
+            <div
+              class="mb-[7px] flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#eef7ff]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#405b80"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M10 9l5 3-5 3V9z" />
+              </svg>
+            </div>
+
+            <p class="text-[9px] font-bold leading-none text-[#102b68]">
+              OTT Subscription
+            </p>
+
+            <p class="mt-[5px] text-[7px] leading-[1.2] text-[#7a8ea8]">
+              Entertainment for all
+            </p>
+          </div>
+
+          <!-- ===================================================
+           07 FASTAG
+      ==================================================== -->
+
+          <div
+            class="group flex h-[102px] flex-col items-center justify-center rounded-[8px] border border-[#e5eef7] bg-white px-2 text-center shadow-[0_2px_8px_rgba(16,43,104,0.025)] transition duration-300 hover:-translate-y-0.5 hover:border-[#cfe6fb] hover:shadow-[0_7px_18px_rgba(16,43,104,0.07)]"
+          >
+            <div
+              class="mb-[7px] flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#eef7ff]"
+            >
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#0875e1"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 17h16" />
+                <path d="M6 17l1-6h10l2 6" />
+                <circle cx="8" cy="18" r="1.5" />
+                <circle cx="16" cy="18" r="1.5" />
+                <path d="M12 5v4" />
+                <path d="M9 7h6" />
+              </svg>
+            </div>
+
+            <p class="text-[9px] font-bold leading-none text-[#102b68]">
+              FASTag Recharge
+            </p>
+
+            <p class="mt-[5px] text-[7px] leading-[1.2] text-[#7a8ea8]">
+              Hassle-free travel
+            </p>
+          </div>
+
+          <!-- ===================================================
+           08 MORE
+      ==================================================== -->
+
+          <div
+            class="group flex h-[102px] flex-col items-center justify-center rounded-[8px] border border-[#e5eef7] bg-white px-2 text-center shadow-[0_2px_8px_rgba(16,43,104,0.025)] transition duration-300 hover:-translate-y-0.5 hover:border-[#cfe6fb] hover:shadow-[0_7px_18px_rgba(16,43,104,0.07)]"
+          >
+            <div
+              class="mb-[7px] flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#eaf2ff] text-[#0875e1]"
+            >
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M12 5v14" />
+                <path d="M5 12h14" />
+              </svg>
+            </div>
+
+            <p class="text-[9px] font-bold leading-none text-[#0875e1]">
+              + More
+            </p>
+
+            <p class="mt-[5px] text-[7px] leading-[1.2] text-[#7a8ea8]">
+              Coming Soon
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     FAQ SECTION
+===================================================== -->
+    <section
+      class="max-w-7xl mx-auto px-4 md:px-10 py-16 grid md:grid-cols-2 gap-10 items-start"
+    >
+      <div>
+        <p class="text-bingo-blue text-xs font-semibold mb-1">
+          Frequently Asked Questions
+        </p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-bingo-navy mb-6">
+          Got Questions? We've Got Answers.
+        </h2>
+
+        <div class="space-y-3">
+          <details class="border border-slate-100 rounded-xl p-4" open>
+            <summary
+              class="flex justify-between items-center font-semibold text-sm text-bingo-navy"
+            >
+              Is BingoPay safe and secure?
+              <span class="faq-icon transition-transform">▾</span>
+            </summary>
+            <p class="text-xs text-slate-500 mt-2">
+              Yes, BingoPay is RBI compliant and uses bank-level security with
+              end-to-end encryption to keep your data and transactions safe.
+            </p>
+          </details>
+          <details class="border border-slate-100 rounded-xl p-4">
+            <summary
+              class="flex justify-between items-center font-semibold text-sm text-bingo-navy"
+            >
+              How do I register as a retailer?
+              <span class="faq-icon transition-transform">▾</span>
+            </summary>
+            <p class="text-xs text-slate-500 mt-2">
+              Sign up on our website or app, complete your KYC, and start
+              transacting within minutes.
+            </p>
+          </details>
+          <details class="border border-slate-100 rounded-xl p-4">
+            <summary
+              class="flex justify-between items-center font-semibold text-sm text-bingo-navy"
+            >
+              What documents are required for KYC?
+              <span class="faq-icon transition-transform">▾</span>
+            </summary>
+            <p class="text-xs text-slate-500 mt-2">
+              You'll need a valid ID proof, address proof, and a passport-size
+              photo to complete KYC.
+            </p>
+          </details>
+          <details class="border border-slate-100 rounded-xl p-4">
+            <summary
+              class="flex justify-between items-center font-semibold text-sm text-bingo-navy"
+            >
+              How do I add money to my wallet?
+              <span class="faq-icon transition-transform">▾</span>
+            </summary>
+            <p class="text-xs text-slate-500 mt-2">
+              You can add money via net banking, UPI, or by connecting your bank
+              account directly in the app.
+            </p>
+          </details>
+          <details class="border border-slate-100 rounded-xl p-4">
+            <summary
+              class="flex justify-between items-center font-semibold text-sm text-bingo-navy"
+            >
+              Do you provide customer support?
+              <span class="faq-icon transition-transform">▾</span>
+            </summary>
+            <p class="text-xs text-slate-500 mt-2">
+              Yes, our dedicated support team is available to help you with any
+              queries, 9 AM - 9 PM, Mon - Sat.
+            </p>
+          </details>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 rounded-2xl p-8 text-center">
+        <div
+          class="w-24 h-24 mx-auto rounded-full bg-slate-200 flex items-center justify-center text-4xl mb-4"
+        >
+          👩‍💼
+        </div>
+        <p class="font-bold text-bingo-navy text-lg">Still Have Questions?</p>
+        <p class="text-xs text-slate-500 mb-4">Our team is here to help you.</p>
+        <button
+          class="bg-bingo-blue text-white text-sm font-semibold px-6 py-2.5 rounded-lg"
+        >
+          Contact Support
+        </button>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     BOTTOM CTA BANNER
+===================================================== -->
+    <!-- =========================================================
+     FINAL CTA — GROW YOUR BUSINESS
+========================================================= -->
+
+    <section id="cta" class="w-full bg-white px-2 py-3 md:px-4">
+      <div
+        class="relative mx-auto flex min-h-[140px] w-full max-w-[1180px] items-center overflow-hidden rounded-[9px] border border-[#d8e8fa] bg-gradient-to-r from-[#092b78] via-[#0757c9] to-[#1727a8] px-6 py-5 text-white shadow-[0_3px_12px_rgba(16,43,104,0.10)] md:px-12"
+      >
+        <!-- =====================================================
+         BLUE / PURPLE GLOW
+    ====================================================== -->
+
+        <div
+          class="pointer-events-none absolute -left-20 top-1/2 h-[180px] w-[280px] -translate-y-1/2 rounded-full bg-[#126cf0]/35 blur-3xl"
+        ></div>
+
+        <div
+          class="pointer-events-none absolute right-[190px] top-[-70px] h-[190px] w-[250px] rounded-full bg-[#5b2cff]/35 blur-3xl"
+        ></div>
+
+        <!-- =====================================================
+         STORE / BUILDING VISUAL
+         
+         If you have the actual Figma banner image, place it
+         here as ./cta-business.png
+    ====================================================== -->
+
+        <div
+          class="pointer-events-none absolute right-[105px] bottom-0 z-10 hidden h-full w-[390px] lg:block"
+        >
+          <div
+            class="absolute bottom-[-25px] left-[45px] h-[145px] w-[260px] rounded-full bg-[#0b78df]/35 blur-2xl"
+          ></div>
+
+          <!-- Business/store illustration -->
+          <div class="absolute bottom-0 left-[72px] h-[105px] w-[205px]">
+            <!-- Building -->
+            <div
+              class="absolute bottom-0 left-[20px] h-[78px] w-[170px] rounded-t-[4px] bg-gradient-to-b from-[#d9e9f8] to-[#ffffff] shadow-[0_5px_15px_rgba(0,0,0,0.20)]"
+            >
+              <!-- Roof -->
+              <div
+                class="absolute -top-[17px] left-[-8px] h-[22px] w-[186px] skew-x-[-10deg] rounded-t-[4px] bg-gradient-to-r from-[#07377f] via-[#1680e8] to-[#0b4bb2]"
+              ></div>
+
+              <!-- Store windows -->
+              <div
+                class="absolute bottom-[16px] left-[14px] h-[36px] w-[142px] bg-gradient-to-b from-[#86cfff] to-[#164c9e]"
+              ></div>
+
+              <!-- Door -->
+              <div
+                class="absolute bottom-0 left-[72px] h-[49px] w-[28px] bg-gradient-to-b from-[#174b8f] to-[#071f51]"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =====================================================
+         LEFT CONTENT
+    ====================================================== -->
+
+        <div class="relative z-20 w-full max-w-[560px]">
+          <!-- Small label -->
+          <p class="text-[9px] font-semibold leading-none text-[#c6dcff]">
+            Let's Grow Together
+          </p>
+
+          <!-- Main heading -->
+          <h2
+            class="mt-[5px] text-[20px] font-extrabold leading-[1.05] tracking-[-0.5px] text-white sm:text-[22px] md:text-[23px]"
+          >
+            Grow Your Business With Smarter Payments.
+          </h2>
+
+          <!-- Description -->
+          <p
+            class="mt-[5px] text-[9px] leading-[1.35] text-[#d8e7ff] sm:text-[9.5px]"
+          >
+            Join thousands of retailers and distributors who trust BingoPay.
+          </p>
+
+          <!-- Buttons -->
+          <div class="mt-3 flex flex-wrap items-center gap-2">
+            <!-- Primary -->
+            <a
+              href="#"
+              class="inline-flex h-[31px] items-center gap-2 rounded-[5px] bg-[#087cf0] px-4 text-[8px] font-bold text-white shadow-[0_4px_12px_rgba(0,0,0,0.18)] transition hover:bg-[#168af5]"
+            >
+              Get Started Now
+              <span class="text-[11px]">→</span>
+            </a>
+
+            <!-- Secondary -->
+            <a
+              href="#"
+              class="inline-flex h-[31px] items-center gap-2 rounded-[5px] border border-white/35 bg-white/5 px-4 text-[8px] font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
+            >
+              <span class="text-[9px]">»</span>
+              Talk to Our Expert
+            </a>
+          </div>
+        </div>
+
+        <!-- =====================================================
+         RIGHT MESSAGE
+    ====================================================== -->
+
+        <div
+          class="absolute right-[18px] top-[17px] z-20 hidden w-[105px] rotate-[-2deg] lg:block"
+        >
+          <p
+            class="text-[12px] font-extrabold uppercase leading-[1.05] tracking-[0.2px] text-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.18)]"
+          >
+            Bigger<br />
+            Opportunities<br />
+            <span class="text-[#b9d9ff]">
+              Brighter<br />
+              Tomorrow
+            </span>
+          </p>
+
+          <!-- Small decorative arrow -->
+          <svg
+            class="absolute -bottom-[22px] right-[-3px] h-[28px] w-[65px]"
+            viewBox="0 0 80 35"
+            fill="none"
+          >
+            <path
+              d="M3 29
+             C23 34 48 27 65 8"
+              stroke="#ffffff"
+              stroke-width="1.7"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M57 8
+             L67 7
+             L64 17"
+              stroke="#ffffff"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     FOOTER
+===================================================== -->
+    <!-- =========================================================
+     BINGOPAY FOOTER
+========================================================= -->
+
+    <footer class="w-full border-t border-[#e7f0f8] bg-white text-[#526783]">
+      <!-- =======================================================
+       MAIN FOOTER
+  ======================================================== -->
+
+      <div
+        class="mx-auto grid w-full max-w-[1180px] grid-cols-1 gap-0 px-5 py-7 sm:grid-cols-2 lg:grid-cols-5 lg:px-0 lg:py-6"
+      >
+        <!-- =====================================================
+         BRAND
+    ====================================================== -->
+
+        <div
+          class="border-b border-[#edf2f7] pb-5 sm:pr-6 lg:border-b-0 lg:border-r lg:pb-0"
+        >
+          <!-- Logo -->
+          <a href="#" class="inline-flex items-center gap-2 no-underline">
+            <!-- BingoPay B Logo -->
+            <span
+              class="flex h-[31px] w-[31px] items-center justify-center rounded-[7px] bg-[#0875e1] text-[17px] font-extrabold text-white shadow-[0_3px_8px_rgba(8,117,225,0.18)]"
+            >
+              B
+            </span>
+
+            <span
+              class="text-[18px] font-extrabold leading-none tracking-[-0.5px] text-[#102b68]"
+            >
+              Bingo<span class="text-[#0875e1]">Pay</span>
+            </span>
+          </a>
+
+          <!-- Tagline -->
+          <p class="mt-[7px] text-[9px] leading-none text-[#71829a]">
+            Simple Payments. Stronger Businesses.
+          </p>
+
+          <!-- Social Icons -->
+          <div class="mt-4 flex items-center gap-2">
+            <!-- Facebook -->
+            <a
+              href="#"
+              aria-label="Facebook"
+              class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-[#2864b5] text-white transition hover:-translate-y-0.5 hover:bg-[#17549e]"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.67.33-1 1-1z"
+                />
+              </svg>
+            </a>
+
+            <!-- LinkedIn -->
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-[#2864b5] text-white transition hover:-translate-y-0.5 hover:bg-[#17549e]"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M6 8H2V22H6V8ZM4 2
+                 A2.3 2.3 0 1 0 4 6.6
+                 A2.3 2.3 0 0 0 4 2ZM22 13.5
+                 C22 9.3 19.8 7.3 16.8 7.3
+                 C14.4 7.3 13.3 8.6 12.7 9.5V8H9V22H13V14.8
+                 C13 12.9 13.4 11 15.6 11
+                 C17.7 11 18 12.9 18 14.7V22H22V13.5Z"
+                />
+              </svg>
+            </a>
+
+            <!-- Instagram -->
+            <a
+              href="#"
+              aria-label="Instagram"
+              class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-[#2864b5] text-white transition hover:-translate-y-0.5 hover:bg-[#17549e]"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </a>
+
+            <!-- YouTube -->
+            <a
+              href="#"
+              aria-label="YouTube"
+              class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-[#e92f58] text-white transition hover:-translate-y-0.5 hover:bg-[#d52049]"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M23 7.2a3 3 0 0 0-2.1-2.1
+                 C19 4.5 12 4.5 12 4.5s-7 0-8.9.6
+                 A3 3 0 0 0 1 7.2
+                 C.4 9.1.4 12 .4 12s0 2.9.6 4.8
+                 a3 3 0 0 0 2.1 2.1
+                 c1.9.6 8.9.6 8.9.6s7 0 8.9-.6
+                 a3 3 0 0 0 2.1-2.1
+                 c.6-1.9.6-4.8.6-4.8s0-2.9-.6-4.8ZM9.8 15.5v-7l6 3.5-6 3.5Z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- =====================================================
+         QUICK LINKS
+    ====================================================== -->
+
+        <div
+          class="border-b border-[#edf2f7] py-5 sm:pl-6 sm:pr-6 lg:border-b-0 lg:border-r lg:py-0"
+        >
+          <h3 class="text-[10px] font-bold leading-none text-[#102b68]">
+            Quick Links
+          </h3>
+
+          <ul
+            class="mt-3 space-y-[5px] text-[8.5px] leading-none text-[#667b97]"
+          >
+            <li><a href="#" class="hover:text-[#0875e1]">Home</a></li>
+            <li><a href="#" class="hover:text-[#0875e1]">About Us</a></li>
+            <li><a href="#" class="hover:text-[#0875e1]">Services</a></li>
+            <li><a href="#" class="hover:text-[#0875e1]">For Retailers</a></li>
+            <li>
+              <a href="#" class="hover:text-[#0875e1]">For Distributors</a>
+            </li>
+            <li><a href="#" class="hover:text-[#0875e1]">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- =====================================================
+         OUR SERVICES
+    ====================================================== -->
+
+        <div
+          class="border-b border-[#edf2f7] py-5 sm:pl-6 sm:pr-6 lg:border-b-0 lg:border-r lg:py-0"
+        >
+          <h3 class="text-[10px] font-bold leading-none text-[#102b68]">
+            Our Services
+          </h3>
+
+          <ul
+            class="mt-3 space-y-[5px] text-[8.5px] leading-none text-[#667b97]"
+          >
+            <li><a href="#" class="hover:text-[#0875e1]">AEPS</a></li>
+            <li><a href="#" class="hover:text-[#0875e1]">Money Transfer</a></li>
+            <li><a href="#" class="hover:text-[#0875e1]">BBPS</a></li>
+            <li>
+              <a href="#" class="hover:text-[#0875e1]">Mobile Recharge</a>
+            </li>
+            <li><a href="#" class="hover:text-[#0875e1]">Insurance</a></li>
+            <li><a href="#" class="hover:text-[#0875e1]">Micro-ATM</a></li>
+            <li><a href="#" class="hover:text-[#0875e1]">QR Payments</a></li>
+            <li>
+              <a href="#" class="hover:text-[#0875e1]">Travel &amp; More</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- =====================================================
+         SUPPORT
+    ====================================================== -->
+
+        <div
+          class="border-b border-[#edf2f7] py-5 sm:pl-6 sm:pr-6 lg:border-b-0 lg:border-r lg:py-0"
+        >
+          <h3 class="text-[10px] font-bold leading-none text-[#102b68]">
+            Support
+          </h3>
+
+          <ul
+            class="mt-3 space-y-[5px] text-[8.5px] leading-none text-[#667b97]"
+          >
+            <li><a href="#" class="hover:text-[#0875e1]">Help Center</a></li>
+            <li><a href="#" class="hover:text-[#0875e1]">KYC Support</a></li>
+            <li>
+              <a href="#" class="hover:text-[#0875e1]">Partner with Us</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-[#0875e1]">
+                Terms &amp; Conditions
+              </a>
+            </li>
+            <li><a href="#" class="hover:text-[#0875e1]">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-[#0875e1]">Refund Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- =====================================================
+         GET IN TOUCH + SUBSCRIBE
+    ====================================================== -->
+
+        <div class="py-5 sm:pl-6 lg:py-0">
+          <h3 class="text-[10px] font-bold leading-none text-[#102b68]">
+            Get in Touch
+          </h3>
+
+          <!-- PHONE -->
+          <div class="mt-3 flex items-start gap-2">
+            <span
+              class="flex h-[21px] w-[21px] shrink-0 items-center justify-center rounded-full bg-[#eaf4ff] text-[#0875e1]"
+            >
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2
+                 19.8 19.8 0 0 1-8.6-3.1
+                 19.5 19.5 0 0 1-6-6
+                 19.8 19.8 0 0 1-3.1-8.6
+                 A2 2 0 0 1 4.1 2h3
+                 a2 2 0 0 1 2 1.7
+                 c.1 1 .4 2 .7 2.9
+                 a2 2 0 0 1-.5 2.1L8 9.9
+                 a16 16 0 0 0 6 6l1.2-1.2
+                 a2 2 0 0 1 2.1-.5
+                 c.9.3 1.9.6 2.9.7
+                 A2 2 0 0 1 22 16.9Z"
+                />
+              </svg>
+            </span>
+
+            <div>
+              <a
+                href="tel:18001234567"
+                class="block text-[8.5px] font-semibold leading-none text-[#526783] hover:text-[#0875e1]"
+              >
+                1800 123 4567
+              </a>
+
+              <span
+                class="mt-[4px] block text-[7px] leading-none text-[#8a9ab0]"
+              >
+                (9 AM - 9 PM, Mon - Sat)
+              </span>
+            </div>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="mt-2 flex items-center gap-2">
+            <span
+              class="flex h-[21px] w-[21px] shrink-0 items-center justify-center rounded-full bg-[#eaf4ff] text-[#0875e1]"
+            >
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
+            </span>
+
+            <a
+              href="mailto:support@bingopay.in"
+              class="text-[8.5px] text-[#526783] hover:text-[#0875e1]"
+            >
+              support@bingopay.in
+            </a>
+          </div>
+
+          <!-- LOCATION -->
+          <div class="mt-2 flex items-center gap-2">
+            <span
+              class="flex h-[21px] w-[21px] shrink-0 items-center justify-center rounded-full bg-[#eaf4ff] text-[#0875e1]"
+            >
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M20 10
+                 c0 5-8 11-8 11S4 15 4 10
+                 a8 8 0 1 1 16 0Z"
+                />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+            </span>
+
+            <span class="text-[8.5px] text-[#526783]">
+              Bhubaneswar, Odisha, India
+            </span>
+          </div>
+
+          <!-- =================================================
+           SUBSCRIBE
+      ================================================== -->
+
+          <div class="mt-4">
+            <p class="text-[9px] font-bold leading-none text-[#102b68]">
+              Subscribe to Updates
+            </p>
+
+            <p class="mt-[4px] text-[7px] leading-none text-[#7a8ea8]">
+              Get latest offers and news.
+            </p>
+
+            <form
+              class="mt-2 flex h-[27px] w-full max-w-[205px] overflow-hidden rounded-full border border-[#dce8f4] bg-white shadow-[0_2px_7px_rgba(16,43,104,0.025)]"
+              onsubmit="return false;"
+            >
+              <input
+                type="email"
+                placeholder="Enter your email"
+                class="min-w-0 flex-1 bg-transparent px-3 text-[8px] text-[#526783] outline-none placeholder:text-[#a0adbd]"
+              />
+
+              <button
+                type="submit"
+                aria-label="Subscribe"
+                class="m-[2px] flex h-[23px] w-[23px] shrink-0 items-center justify-center rounded-full bg-[#0875e1] text-[11px] font-bold text-white transition hover:bg-[#0564c5]"
+              >
+                →
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- =======================================================
+       BOTTOM BAR
+  ======================================================== -->
+
+      <div class="border-t border-[#e8eff6]">
+        <div
+          class="mx-auto flex min-h-[38px] w-full max-w-[1180px] flex-col items-center justify-between gap-2 px-5 py-3 text-[7.5px] text-[#71829a] sm:flex-row lg:px-0"
+        >
+          <p>© 2025 BingoPay. All rights reserved.</p>
+
+          <p>
+            Made with
+            <span class="text-[#ef3f52]">♥</span>
+            for a Digital India
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
